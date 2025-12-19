@@ -1,0 +1,32 @@
+###################
+# HELPER COMMANDS #
+###################
+
+# run django manage.py commands
+dj +ARGS:
+	- uv run manage.py {{ARGS}}
+
+# run the django dev server
+django-dev $DEBUG="true":
+	- just dj runserver
+
+# run the vite asset server
+vite-dev:
+	- bun run vite
+
+############
+# COMMANDS #
+############
+
+# start the dev environment
+[parallel]
+dev: (django-dev) (vite-dev)
+
+# build assets for production
+build:
+	- bun run vite build
+	- just dj collectstatic --noinput
+
+# start the production server
+serve $DEBUG="false" PORT="8000":
+	- waitress-serve --port={{PORT}} config.wsgi:application
