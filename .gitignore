@@ -217,3 +217,7 @@ __marimo__/
 
 __staticfiles__/
 __mediafiles__/
+
+node_modules/
+
+core/static/vite/
