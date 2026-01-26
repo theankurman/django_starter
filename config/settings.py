@@ -15,6 +15,8 @@ import dotenv
 import os
 import dj_database_url
 
+from backgroundtasks.storage import DjangoOrmHuey
+
 
 dotenv.load_dotenv()
 
@@ -49,6 +51,8 @@ INSTALLED_APPS = [
     "users",
     "allauth.account",
     "django_vite",
+    "huey.contrib.djhuey",
+    #
     "core",
     "backgroundtasks",
 ]
@@ -150,3 +154,5 @@ DJANGO_VITE = {
         "static_url_prefix": "vite",
     }
 }
+
+HUEY = DjangoOrmHuey()
