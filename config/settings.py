@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "django_vite",
     "core",
+    "backgroundtasks",
 ]
 
 MIDDLEWARE = [
