@@ -37,5 +37,6 @@ build:
 serve $DEBUG="false" PORT="8000":
 	- waitress-serve --port={{PORT}} config.wsgi:application
 
+# run the task worker process
 tasks *ARGS:
 	- just dj run_huey {{ARGS}}
