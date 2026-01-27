@@ -15,6 +15,8 @@ import dotenv
 import os
 import dj_database_url
 
+from backgroundtasks.storage import DjangoOrmHuey
+
 
 dotenv.load_dotenv()
 
@@ -49,7 +51,10 @@ INSTALLED_APPS = [
     "users",
     "allauth.account",
     "django_vite",
+    "huey.contrib.djhuey",
+    #
     "core",
+    "backgroundtasks",
 ]
 
 MIDDLEWARE = [
@@ -149,3 +154,17 @@ DJANGO_VITE = {
         "static_url_prefix": "vite",
     }
 }
+
+HUEY = DjangoOrmHuey()
+
+
+# EMAIL SETTINGS
+EMAIL_BACKEND = "backgroundtasks.mail.backends.BackgroundTaskEmailBackend"
+BACKGROUND_TASK_EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+DEFAULT_FROM_EMAIL = os.getenv("EMAIL_FROM")
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_USERNAME")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "true").lower() == "true"
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", "true").lower() == "true"

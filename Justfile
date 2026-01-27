@@ -14,13 +14,19 @@ django-dev $DEBUG="true":
 vite-dev:
 	- bun run vite
 
+tasks-dev:
+	- just dj run_huey
+
+mail-dev:
+	- mailpit
+
 ############
 # COMMANDS #
 ############
 
 # start the dev environment
 [parallel]
-dev: (django-dev) (vite-dev)
+dev: (django-dev) (vite-dev) (tasks-dev) (mail-dev)
 
 # build assets for production
 build:
@@ -30,3 +36,6 @@ build:
 # start the production server
 serve $DEBUG="false" PORT="8000":
 	- waitress-serve --port={{PORT}} config.wsgi:application
+
+tasks *ARGS:
+	- just dj run_huey {{ARGS}}
