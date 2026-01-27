@@ -36,6 +36,7 @@ if not SECRET_KEY:
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost;127.0.0.1").split(";")
+INTERNAL_IPS = os.getenv("INTERNAL_IPS", "localhost;127.0.0.1").split(";")
 
 
 # Application definition
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "django_vite",
     "huey.contrib.djhuey",
+    "debug_toolbar",
     #
     "core",
     "backgroundtasks",
@@ -67,6 +69,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
