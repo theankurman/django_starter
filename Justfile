@@ -6,6 +6,10 @@
 dj +ARGS:
 	- uv run manage.py {{ARGS}}
 
+migrate:
+	- just dj createcachetable
+	- just dj migrate
+
 # run the django dev server
 django-dev $DEBUG="true":
 	- just dj runserver
