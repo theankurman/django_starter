@@ -16,8 +16,7 @@ class KV(models.Model):
         verbose_name_plural = "KVs"
         constraints = [
             models.UniqueConstraint(
-                "queue",
-                "key",
+                fields=["queue", "key"],
                 name="unique_kv_queue_key",
             ),
         ]
@@ -37,8 +36,7 @@ class Schedule(models.Model):
         verbose_name_plural = "Schedules"
         indexes = [
             models.Index(
-                "queue",
-                "timestamp",
+                fields=["queue", "timestamp"],
                 name="idx_schedule_queue_timestamp",
             )
         ]
@@ -59,8 +57,7 @@ class Task(models.Model):
         verbose_name_plural = "Tasks"
         indexes = [
             models.Index(
-                models.F("priority").desc(),
-                "id",
+                fields=["priority", "id"],
                 name="idx_task_priority_id",
             )
         ]
