@@ -1,11 +1,11 @@
 {
+    "tabWidth": 4,
     "plugins": ["prettier-plugin-jinja-template"],
     "overrides": [
         {
             "files":["*.html"],
             "options": {
                 "parser": "jinja-template",
-                "tabWidth": 4,
                 "htmlWhitespaceSensitivity": "ignore"
             }
         }
