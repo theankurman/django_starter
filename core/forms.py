@@ -18,8 +18,10 @@ class DaisyFormMixin(forms.Form):
             is_checkbox = isinstance(field.widget, forms.widgets.CheckboxInput)
             is_select = isinstance(field.widget, forms.widgets.Select)
             is_textarea = isinstance(field.widget, forms.widgets.Textarea)
-            is_input = isinstance(field.widget, forms.widgets.TextInput) or isinstance(
-                field.widget, forms.widgets.NumberInput
+            is_input = (
+                isinstance(field.widget, forms.widgets.TextInput)
+                or isinstance(field.widget, forms.widgets.NumberInput)
+                or isinstance(field.widget, forms.widgets.PasswordInput)
             )
 
             classes.add("w-full")
