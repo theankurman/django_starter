@@ -6,7 +6,7 @@
     </ul>
 {% endif %}
 
-<div>
+<div class="grid gap-2">
     {% for field in form %}
         <div>
             {% if not field.is_hidden %}
@@ -23,7 +23,7 @@
                     </ul>
                 {% endif %}
             {% endif %}
-            <div class="text-opacity-80">{{ field.help_text|safe }}</div>
+            <div class="opacity-80 text-sm">{{ field.help_text|safe }}</div>
         </div>
     {% endfor %}
 </div>
