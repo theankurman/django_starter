@@ -1,0 +1,37 @@
+########
+# RUFF #
+########
+[[repos]]
+repo = "https://github.com/astral-sh/ruff-pre-commit"
+rev = "v0.15.0"                                       # Ruff version.
+
+[[repos.hooks]]
+id = "ruff-format"
+
+
+######
+# UV #
+######
+[[repos]]
+repo = "https://github.com/astral-sh/uv-pre-commit"
+rev = "0.10.10"
+
+[[repos.hooks]]
+id = "uv-lock"
+
+[[repos.hooks]]
+id = "uv-export"
+
+##########
+# CUSTOM #
+##########
+[[repos]]
+repo = "local"
+
+# prettier
+[[repos.hooks]]
+id = "local-prettier"
+name = "prettier"
+language = "system"
+entry = "bunx prettier --write"
+files = { glob = ["*.js", "*.ts", "*.html"] }
