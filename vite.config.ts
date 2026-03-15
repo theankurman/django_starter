@@ -1,11 +1,11 @@
-import { defineConfig } from "vite"
-import { resolve } from "path"
+import { defineConfig } from "vite";
+import { resolve } from "path";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
     base: "/static/vite/",
     plugins: [
-        // 
+        //
         tailwindcss(),
     ],
     build: {
@@ -13,9 +13,9 @@ export default defineConfig({
         outDir: resolve("./core/static/vite"),
         rollupOptions: {
             input: [
-                // 
+                //
                 "core/resources/js/main.ts",
-            ]
-        }
-    }
-})
+            ],
+        },
+    },
+});

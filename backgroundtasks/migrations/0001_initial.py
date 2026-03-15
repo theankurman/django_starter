@@ -4,55 +4,88 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='KV',
+            name="KV",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('queue', models.CharField(max_length=255)),
-                ('key', models.CharField(max_length=255)),
-                ('value', models.BinaryField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("queue", models.CharField(max_length=255)),
+                ("key", models.CharField(max_length=255)),
+                ("value", models.BinaryField()),
             ],
             options={
-                'verbose_name': 'KV',
-                'verbose_name_plural': 'KVs',
-                'constraints': [models.UniqueConstraint(fields=('queue', 'key'), name='unique_kv_queue_key')],
+                "verbose_name": "KV",
+                "verbose_name_plural": "KVs",
+                "constraints": [
+                    models.UniqueConstraint(
+                        fields=("queue", "key"), name="unique_kv_queue_key"
+                    )
+                ],
             },
         ),
         migrations.CreateModel(
-            name='Schedule',
+            name="Schedule",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('queue', models.CharField(max_length=255)),
-                ('data', models.BinaryField()),
-                ('timestamp', models.DateTimeField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("queue", models.CharField(max_length=255)),
+                ("data", models.BinaryField()),
+                ("timestamp", models.DateTimeField()),
             ],
             options={
-                'verbose_name': 'Schedule',
-                'verbose_name_plural': 'Schedules',
-                'ordering': ['timestamp'],
-                'indexes': [models.Index(fields=['queue', 'timestamp'], name='idx_schedule_queue_timestamp')],
+                "verbose_name": "Schedule",
+                "verbose_name_plural": "Schedules",
+                "ordering": ["timestamp"],
+                "indexes": [
+                    models.Index(
+                        fields=["queue", "timestamp"],
+                        name="idx_schedule_queue_timestamp",
+                    )
+                ],
             },
         ),
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('queue', models.CharField(max_length=255)),
-                ('data', models.BinaryField()),
-                ('priority', models.FloatField(default=0.0)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("queue", models.CharField(max_length=255)),
+                ("data", models.BinaryField()),
+                ("priority", models.FloatField(default=0.0)),
             ],
             options={
-                'verbose_name': 'Task',
-                'verbose_name_plural': 'Tasks',
-                'ordering': ['-priority', 'id'],
-                'indexes': [models.Index(fields=['priority', 'id'], name='idx_task_priority_id')],
+                "verbose_name": "Task",
+                "verbose_name_plural": "Tasks",
+                "ordering": ["-priority", "id"],
+                "indexes": [
+                    models.Index(fields=["priority", "id"], name="idx_task_priority_id")
+                ],
             },
         ),
     ]
