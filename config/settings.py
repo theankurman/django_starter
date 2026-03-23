@@ -147,6 +147,7 @@ ACCOUNT_ADAPTER = "users.account_adapter.AccountAdapter"
 ACCOUNT_FORMS = {
     "login": "users.forms.LoginForm",
     "signup": "users.forms.SignupForm",
+    "reset_password": "users.forms.ResetPasswordForm",
 }
 
 
