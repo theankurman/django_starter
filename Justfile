@@ -41,6 +41,11 @@ setup:
 test *ARGS:
     - uv run pytest {{ ARGS }}
 
+format:
+    - uvx ruff format
+    - uvx ruff check --fix
+    - bunx prettier --write .
+
 # start the dev environment
 [parallel]
 dev: django-dev vite-dev tasks-dev mail-dev
