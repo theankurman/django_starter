@@ -35,6 +35,8 @@ setup:
     - cp --update=none .env.example .env
     - sed "s/SECRET_KEY=\"\"/SECRET_KEY=\"$(uv run python -c 'import secrets; print(secrets.token_urlsafe(32))')\"/g" --in-place .env
     - uvx prek install
+    - just migrate
+    - just build
 
 # start the dev environment
 [parallel]
