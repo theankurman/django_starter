@@ -42,8 +42,8 @@ test *ARGS:
     - uv run pytest {{ ARGS }}
 
 format:
-    - uvx ruff format
     - uvx ruff check --fix
+    - uvx ruff format
     - bunx prettier --write .
 
 # start the dev environment
