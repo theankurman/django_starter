@@ -38,6 +38,9 @@ setup:
     - just migrate
     - just build
 
+test *ARGS:
+    - uv run pytest {{ ARGS }}
+
 # start the dev environment
 [parallel]
 dev: django-dev vite-dev tasks-dev mail-dev
