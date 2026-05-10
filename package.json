@@ -4,16 +4,16 @@
     "type": "module",
     "private": true,
     "devDependencies": {
-        "@iconify-json/lucide": "^1.2.81",
-        "@iconify/tailwind4": "^1.2.0",
+        "@iconify-json/lucide": "^1.2.102",
+        "@iconify/tailwind4": "^1.2.3",
         "@tailwindcss/typography": "^0.5.19",
-        "@tailwindcss/vite": "^4.1.18",
+        "@tailwindcss/vite": "^4.2.2",
         "@types/bun": "latest",
-        "daisyui": "^5.5.14",
-        "prettier": "^3.8.1",
+        "daisyui": "^5.5.19",
+        "prettier": "^3.8.2",
         "prettier-plugin-jinja-template": "^2.1.0",
-        "tailwindcss": "^4.1.18",
-        "vite": "^7.3.0"
+        "tailwindcss": "^4.2.2",
+        "vite": "^8.0.8"
     },
     "peerDependencies": {
         "typescript": "^5"
