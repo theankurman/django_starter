@@ -56,8 +56,8 @@ build:
     - just dj collectstatic --noinput
 
 # start the production server
-serve $DEBUG="false" PORT="8000":
-    - waitress-serve --port={{ PORT }} config.wsgi:application
+prod $DEBUG="false" PORT="8000":
+    - uv run waitress-serve --port={{ PORT }} config.wsgi:application
 
 # run the task worker process
 tasks *ARGS:
