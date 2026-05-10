@@ -9,6 +9,7 @@ import re
 uv = shutil.which("uv")
 bun = shutil.which("bun")
 just = shutil.which("just")
+git = shutil.which("git")
 if not uv:
     raise Exception(
         "uv not found in path. Visit `https://github.com/astral-sh/uv` to install it."
@@ -21,8 +22,22 @@ if not just:
     raise Exception(
         "just not found in path. You can install it with `uv tool install rust-just`"
     )
+if not git:
+    raise Exception("git not found in path. Please install git before continuing.")
 
+# initialise git if not
+git_inited = (
+    subprocess.check_output([git, "rev-parse", "--is-inside-work-tree"], text=True)
+    == "true"
+)
+if not git_inited:
+    subprocess.run([git, "init", "-b", "main"])
+
+
+# install python dependencies
 subprocess.run([uv, "sync"])
+
+# install js dependencies
 subprocess.run([bun, "i"])
 
 
@@ -47,5 +62,7 @@ if prek:
 else:
     subprocess.run(["uvx", "prek", "install"])
 
+# build frontend assets
 subprocess.run([just, "build"])
+# migrate the database
 subprocess.run([just, "migrate"])
