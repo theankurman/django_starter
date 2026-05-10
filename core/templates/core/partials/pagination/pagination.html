@@ -1,0 +1,21 @@
+{% if total > 0 %}
+    <div class="flex items-end justify-between flex-wrap">
+        <p>
+            Showing {{ start_index }} - {{ end_index }} of {{ total }}
+            {{ item_name }}
+        </p>
+
+        <div class="join">
+            {% for link in links %}
+                <a
+                    href="{{ link.link|default_if_none:"" }}"
+                    class="btn join-item {% if link.is_active %}
+                        btn-active pointer-events-none
+                    {% endif %}"
+                >
+                    {{ link.label }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
