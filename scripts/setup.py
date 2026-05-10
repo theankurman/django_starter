@@ -26,10 +26,14 @@ if not git:
     raise Exception("git not found in path. Please install git before continuing.")
 
 # initialise git if not
-git_inited = (
-    subprocess.check_output([git, "rev-parse", "--is-inside-work-tree"], text=True)
-    == "true"
-)
+try:
+    git_inited = (
+        subprocess.check_output([git, "rev-parse", "--is-inside-work-tree"], text=True)
+        == "true"
+    )
+except subprocess.CalledProcessError:
+    git_inited = False
+
 if not git_inited:
     subprocess.run([git, "init", "-b", "main"])
 
