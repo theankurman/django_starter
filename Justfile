@@ -16,7 +16,7 @@ django-dev $DEBUG="true":
 
 # run the vite asset server
 vite-dev:
-    - bun run vite
+    - pnpm vite
 
 tasks-dev:
     - just dj run_huey
@@ -38,7 +38,7 @@ test *ARGS:
 format:
     - uvx ruff check --fix
     - uvx ruff format
-    - bunx prettier --write .
+    - pnpx prettier --write .
 
 # start the dev environment
 [parallel]
@@ -46,7 +46,7 @@ dev: django-dev vite-dev tasks-dev mail-dev
 
 # build assets for production
 build:
-    - bun run vite build
+    - pnpm vite build
     - just dj collectstatic --noinput
 
 # start the production server

@@ -7,17 +7,15 @@ from pathlib import Path
 import re
 
 uv = shutil.which("uv")
-bun = shutil.which("bun")
+pnpm = shutil.which("pnpm")
 just = shutil.which("just")
 git = shutil.which("git")
 if not uv:
     raise Exception(
         "uv not found in path. Visit `https://github.com/astral-sh/uv` to install it."
     )
-if not bun:
-    raise Exception(
-        "bun not found in path. Visit `https://github.com/oven-sh/bun` to install it."
-    )
+if not pnpm:
+    raise Exception("bun not found in path. Run `npm i -g pnpm` to install it.")
 if not just:
     raise Exception(
         "just not found in path. You can install it with `uv tool install rust-just`"
@@ -42,7 +40,7 @@ if not git_inited:
 subprocess.run([uv, "sync"])
 
 # install js dependencies
-subprocess.run([bun, "i"])
+subprocess.run([pnpm, "i"])
 
 
 # create .env file if not exists
