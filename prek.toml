@@ -33,5 +33,5 @@ repo = "local"
 id = "local-prettier"
 name = "prettier"
 language = "system"
-entry = "bunx prettier --write"
+entry = "pnpm prettier --write"
 files = { glob = ["*.js", "*.ts", "*.html"] }

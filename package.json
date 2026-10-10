@@ -8,7 +8,6 @@
         "@iconify/tailwind4": "^1.2.3",
         "@tailwindcss/typography": "^0.5.20",
         "@tailwindcss/vite": "^4.3.3",
-        "@types/bun": "latest",
         "daisyui": "^5.7.47",
         "prettier": "^3.9.9",
         "prettier-plugin-jinja-template": "^2.2.0",

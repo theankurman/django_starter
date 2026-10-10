@@ -15,7 +15,7 @@ if not uv:
         "uv not found in path. Visit `https://github.com/astral-sh/uv` to install it."
     )
 if not pnpm:
-    raise Exception("bun not found in path. Run `npm i -g pnpm` to install it.")
+    raise Exception("pnpm not found in path. Run `npm i -g pnpm` to install it.")
 if not just:
     raise Exception(
         "just not found in path. You can install it with `uv tool install rust-just`"

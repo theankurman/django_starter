@@ -24,9 +24,6 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.3.3
         version: 4.3.3(vite@8.3.4(@types/node@26.6.4)(jiti@2.7.0))
-      '@types/bun':
-        specifier: latest
-        version: 1.4.2
       daisyui:
         specifier: ^5.7.47
         version: 5.7.47
@@ -285,17 +282,11 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7 || ^8
 
-  '@types/bun@1.4.2':
-    resolution: {integrity: sha512-GimotNn7+ZV0uVArItBbriZsR1oNf0+WTzPkdcFrzShI7k2norL0uzEaJT8T33dWr7O/c9ZDuAFQrctKCi72oQ==}
-
   '@types/node@26.6.4':
     resolution: {integrity: sha512-ldVPDCzj7fsaGZrLB0NuHuTvJcsNasysBAqMolr/cgxrLd1xbqxIr3XJiPnHHJUCxj5sNF1vnRj9aWnrVh5Jcg==}
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
-
-  bun-types@1.4.2:
-    resolution: {integrity: sha512-bxV1FgK7yBIzjRe5zBozIM4Bem11ZJcCXSrjWRG3YWLt8yFDePu4cLjpebO8OvPeIE9trbyPF4fuj3Cia4Fj3w==}
 
   commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
@@ -848,19 +839,12 @@ snapshots:
       tailwindcss: 4.3.3
       vite: 8.3.4(@types/node@26.6.4)(jiti@2.7.0)
 
-  '@types/bun@1.4.2':
-    dependencies:
-      bun-types: 1.4.2
-
   '@types/node@26.6.4':
     dependencies:
       undici-types: 8.9.0
+    optional: true
 
   boolbase@1.0.0: {}
-
-  bun-types@1.4.2:
-    dependencies:
-      '@types/node': 26.6.4
 
   commander@11.1.0: {}
 
@@ -1121,7 +1105,8 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  undici-types@8.9.0: {}
+  undici-types@8.9.0:
+    optional: true
 
   util-deprecate@1.0.2: {}
 
