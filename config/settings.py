@@ -37,6 +37,7 @@ DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost;127.0.0.1").split(";")
 INTERNAL_IPS = os.getenv("INTERNAL_IPS", "localhost;127.0.0.1").split(";")
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(";")
 
 
 # Application definition
