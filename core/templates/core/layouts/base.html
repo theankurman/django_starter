@@ -17,5 +17,77 @@
     <body>
         {% block body %}
         {% endblock body %}
+
+        {% if messages %}
+            <div class="toast toast-bottom toast-end z-50">
+                {% for message in messages %}
+                    <div
+                        x-data="{
+                            open: true,
+                            duration: 10000,
+                            remaining: 10000,
+                            paused: false,
+                            timer: null,
+                            init() {
+                            this.timer = setInterval(() => {
+                                if (this.paused) return;
+                                this.remaining -= 50;
+                                if (this.remaining <= 0) this.close();
+                            }, 50);
+                            },
+                            close() {
+                            clearInterval(this.timer);
+                            this.open = false;
+                            }
+                        }"
+                        x-show="open"
+                        x-transition:leave="transition ease-in duration-200"
+                        x-transition:leave-start="opacity-100 translate-x-0"
+                        x-transition:leave-end="opacity-0 translate-x-4"
+                        @mouseenter="paused = true"
+                        @mouseleave="paused = false"
+                        role="alert"
+                        class="alert relative w-80 overflow-hidden pr-12 shadow-lg sm:w-96 alert-{{ message_tag }}"
+                    >
+                        {# alert alert-info alert-success alert-warning alert-error #}
+                        {% if message.level_tag == 'success' %}
+                            <span
+                                class="icon-[lucide--circle-check] size-5 shrink-0"
+                            ></span>
+                        {% elif message.level_tag == 'error' %}
+                            <span
+                                class="icon-[lucide--circle-x] size-5 shrink-0"
+                            ></span>
+                        {% elif message.level_tag == 'warning' %}
+                            <span
+                                class="icon-[lucide--triangle-alert] size-5 shrink-0"
+                            ></span>
+                        {% else %}
+                            <span
+                                class="icon-[lucide--info] size-5 shrink-0"
+                            ></span>
+                        {% endif %}
+
+                        <span>{{ message }}</span>
+
+                        {# Close button #}
+                        <button
+                            type="button"
+                            class="btn btn-ghost btn-xs btn-circle absolute right-2 top-2"
+                            aria-label="Dismiss"
+                            @click="close()"
+                        >
+                            <span class="icon-[lucide--x] size-4"></span>
+                        </button>
+
+                        {# Progress indicator (pauses while hovered) #}
+                        <div
+                            class="absolute bottom-0 left-0 h-1 bg-current opacity-40"
+                            :style="`width: ${(remaining / duration) * 100}%; transition: width 50ms linear;`"
+                        ></div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </body>
 </html>
