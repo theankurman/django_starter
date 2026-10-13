@@ -1,27 +1,32 @@
 # # setup the environment for development
 
-import secrets
-import subprocess
-import shutil
-from pathlib import Path
 import re
+import secrets
+import shutil
+import subprocess
+from pathlib import Path
+
+
+class SetupException(Exception):
+    pass
+
 
 uv = shutil.which("uv")
 pnpm = shutil.which("pnpm")
 just = shutil.which("just")
 git = shutil.which("git")
 if not uv:
-    raise Exception(
+    raise SetupException(
         "uv not found in path. Visit `https://github.com/astral-sh/uv` to install it."
     )
 if not pnpm:
-    raise Exception("pnpm not found in path. Run `npm i -g pnpm` to install it.")
+    raise SetupException("pnpm not found in path. Run `npm i -g pnpm` to install it.")
 if not just:
-    raise Exception(
+    raise SetupException(
         "just not found in path. You can install it with `uv tool install rust-just`"
     )
 if not git:
-    raise Exception("git not found in path. Please install git before continuing.")
+    raise SetupException("git not found in path. Please install git before continuing.")
 
 # initialise git if not
 try:

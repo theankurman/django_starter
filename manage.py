@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 
+import multiprocessing
 import os
 import sys
-import multiprocessing
 
 
 def main():

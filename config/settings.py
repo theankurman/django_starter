@@ -10,13 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
-from pathlib import Path
-import dotenv
 import os
+from pathlib import Path
+
 import dj_database_url
+import dotenv
+from django.core.exceptions import ImproperlyConfigured
 
 from backgroundtasks.storage import DjangoOrmHuey
-
 
 dotenv.load_dotenv()
 
@@ -30,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
-    raise Exception("SECRET_KEY not set in environment variables")
+    raise ImproperlyConfigured("SECRET_KEY not set in environment variables")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
@@ -51,14 +52,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    #
     "users",
     "allauth",
     "allauth.account",
     "django_vite",
     "huey.contrib.djhuey",
     "debug_toolbar",
-    #
     "core",
     "backgroundtasks",
 ]

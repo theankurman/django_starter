@@ -1,8 +1,8 @@
 from datetime import UTC
+
 from django.db import close_old_connections, transaction
-from huey.storage import BaseStorage
-from huey.storage import EmptyData
 from huey import Huey
+from huey.storage import BaseStorage, EmptyData
 
 
 class DjangoOrmStorage(BaseStorage):

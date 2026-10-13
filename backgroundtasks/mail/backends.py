@@ -1,4 +1,5 @@
-from typing import Iterable
+from collections.abc import Iterable
+
 from django.core.mail.backends.base import BaseEmailBackend
 from django.core.mail.message import EmailMessage
 

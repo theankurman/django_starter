@@ -1,8 +1,8 @@
-from typing import cast, TypedDict
+from typing import TypedDict, cast
 
 from django import template
-from django.http import HttpRequest
 from django.core.paginator import Page
+from django.http import HttpRequest
 
 register = template.Library()
 

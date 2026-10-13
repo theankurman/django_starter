@@ -1,7 +1,11 @@
 from allauth.account.forms import (
     LoginForm as _LoginForm,
-    SignupForm as _SignupForm,
+)
+from allauth.account.forms import (
     ResetPasswordForm as _ResetPasswordForm,
+)
+from allauth.account.forms import (
+    SignupForm as _SignupForm,
 )
 
 from core.forms import DaisyFormMixin

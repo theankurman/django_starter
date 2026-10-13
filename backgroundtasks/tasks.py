@@ -1,6 +1,6 @@
-from huey.contrib.djhuey import task
-from django.core import mail
 from django.conf import settings
+from django.core import mail
+from huey.contrib.djhuey import task
 
 
 @task()
