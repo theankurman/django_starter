@@ -46,6 +46,8 @@ dev: django-dev vite-dev tasks-dev mail-dev
 
 # build assets for production
 build:
+    - uv sync
+    - pnpm i
     - pnpm vite build
     - just dj collectstatic --noinput
 
